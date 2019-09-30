@@ -13,12 +13,39 @@ public class Lowest_Common_AncestorTest extends TestCase {
 	    
 	    }
 
-	    /* Tests for */
+	    /* Tests for input of two nodes, where the LCA is the root node */
 	    @Test
-	    public void test() 
+	    public void testLCAisRoot() 
 	    {
 	        //TODO
+	  
 	    	
 	    }
 	    
+	    /* Tests for input of two nodes, where the LCA is not the root node */
+	    @Test
+	    public void testLCAisNotRoot() 
+	    {
+	        //TODO
+	  
+	    	
+	    }
+	    
+	    /* Tests for input of two nodes, where the LCA is the first input node */
+	    @Test
+	    public void testLCAisNode1() 
+	    {
+	        //TODO
+	  
+	    	
+	    }
+	    
+	    /* Tests for input of two nodes, where the LCA is the second input node */
+	    @Test
+	    public void testLCAisNode2() 
+	    {
+	        //TODO
+	  
+	    	
+	    }
 }
