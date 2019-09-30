@@ -9,7 +9,6 @@ public class Lowest_Common_AncestorTest extends TestCase {
 	 @Test
 	    public void testConstructor() 
 	    {
-	        //TODO
 		 new Lowest_Common_Ancestor();
 	    
 	    }
@@ -18,8 +17,19 @@ public class Lowest_Common_AncestorTest extends TestCase {
 	 @Test
 	    public void testBinaryTreeConstructor() 
 	    {
-	        //TODO
-		 new Lowest_Common_Ancestor();
+		 	Lowest_Common_Ancestor LCA = new Lowest_Common_Ancestor();
+	        Lowest_Common_Ancestor.BinaryTree tree = LCA.new BinaryTree(); //create the binary tree to represent graph
+	        
+	        //populate the tree with some nodes 
+	        tree.root = LCA.new Node(1); 
+	        tree.root.left = LCA.new Node(2); 
+	        tree.root.right = LCA.new Node(3); 
+	        tree.root.left.left = LCA.new Node(4); 
+	        tree.root.left.right = LCA.new Node(5); 
+	        tree.root.right.left = LCA.new Node(6); 
+	        tree.root.right.right = LCA.new Node(7); 
+	        
+	        
 	    
 	    }
 
