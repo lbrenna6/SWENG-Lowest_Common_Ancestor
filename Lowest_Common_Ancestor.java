@@ -87,12 +87,12 @@ public class Lowest_Common_Ancestor {
 	        if (v1 && v2) 
 	            return lca; 
 	  
-	        // Else return NULL 
+	        // Else return 0
 	        return null; 
 	    } 
 	  
 	    /* Driver program to test above functions */
-	    public void main(String args[]) 
+	    /*public void main(String args[]) 
 	    { 
 	        BinaryTree tree = new BinaryTree(); //create the binary tree to represent graph
 	        
@@ -116,6 +116,6 @@ public class Lowest_Common_Ancestor {
 	            System.out.println("LCA(4, 10) = " + lca.data); 
 	        else
 	            System.out.println("Keys are not present"); 
-	    } 
+	    } */
 	} 
 }
