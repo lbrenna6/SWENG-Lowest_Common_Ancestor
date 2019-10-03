@@ -37,6 +37,9 @@ public class Lowest_Common_AncestorTest extends TestCase {
 	    public void testEmptyTree() 
 	    {
 	        //TODO
+	    	Lowest_Common_Ancestor LCA = new Lowest_Common_Ancestor();
+	        Lowest_Common_Ancestor.BinaryTree tree = LCA.new BinaryTree(); //create the binary tree to represent graph
+	        assertEquals(null,tree.findLCA(1, 2));
 	  
 	    	
 	    }
