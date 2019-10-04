@@ -182,4 +182,20 @@ public class Lowest_Common_AncestorTest extends TestCase {
 	    
 	    //different types of trees
 	    
+	    /* Tests for when the nodes are negative*/
+	    @Test
+	    public void testNodesInStraightLine() 
+	    {
+	        //TODO
+	    	Lowest_Common_Ancestor LCA = new Lowest_Common_Ancestor();
+	        Lowest_Common_Ancestor.BinaryTree tree = LCA.new BinaryTree(); //create the binary tree to represent graph
+	        
+	        tree.root = LCA.new Node(1); 
+	        tree.root.left = LCA.new Node(2); 
+	        tree.root.left.left = LCA.new Node(3);  
+	        tree.root.left.left.left = LCA.new Node(4); 
+	        assertEquals(2, tree.findLCA(3,2).data);
+	    	
+	    }
+	    
 }
