@@ -184,7 +184,7 @@ public class Lowest_Common_AncestorTest extends TestCase {
 	    
 	    /* Tests for when tree only has nodes coming from left*/
 	    @Test
-	    public void testNodesInStraightLine() 
+	    public void testNodesInStraightLineToLeft() 
 	    {
 	        //TODO
 	    	Lowest_Common_Ancestor LCA = new Lowest_Common_Ancestor();
@@ -195,7 +195,21 @@ public class Lowest_Common_AncestorTest extends TestCase {
 	        tree.root.left.left = LCA.new Node(3);  
 	        tree.root.left.left.left = LCA.new Node(4); 
 	        assertEquals(2, tree.findLCA(3,2).data);
-	    	
+	    }
+	    
+	    /* Tests for when tree only has nodes coming from right*/
+	    @Test
+	    public void testNodesInStraightLineToRight() 
+	    {
+	        //TODO
+	    	Lowest_Common_Ancestor LCA = new Lowest_Common_Ancestor();
+	        Lowest_Common_Ancestor.BinaryTree tree = LCA.new BinaryTree(); //create the binary tree to represent graph
+	        
+	        tree.root = LCA.new Node(1); 
+	        tree.root.right = LCA.new Node(2); 
+	        tree.root.right.right = LCA.new Node(3);  
+	        tree.root.right.right.right = LCA.new Node(4); 
+	        assertEquals(2, tree.findLCA(3,2).data);
 	    }
 	    
 	    /* Tests for when the nodes are negative*/
@@ -213,8 +227,7 @@ public class Lowest_Common_AncestorTest extends TestCase {
 	        tree.root.left.right = LCA.new Node(-5); 
 	        tree.root.right.left = LCA.new Node(-6); 
 	        tree.root.right.right = LCA.new Node(-7);
-	        assertEquals(-2, tree.findLCA(-5,-4).data);
-	    	
+	        assertEquals(-2, tree.findLCA(-5,-4).data);   	
 	    }
 	    
 }
