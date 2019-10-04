@@ -200,7 +200,7 @@ public class Lowest_Common_AncestorTest extends TestCase {
 	    
 	    /* Tests for when the nodes are negative*/
 	    @Test
-	    public void testNegativeNode() 
+	    public void testNegativeNodeTree() 
 	    {
 	        //TODO
 	    	Lowest_Common_Ancestor LCA = new Lowest_Common_Ancestor();
@@ -213,7 +213,7 @@ public class Lowest_Common_AncestorTest extends TestCase {
 	        tree.root.left.right = LCA.new Node(-5); 
 	        tree.root.right.left = LCA.new Node(-6); 
 	        tree.root.right.right = LCA.new Node(-7);
-	        assertEquals(-2, tree.findLCA(-5,-4));
+	        assertEquals(-2, tree.findLCA(-5,-4).data);
 	    	
 	    }
 	    
