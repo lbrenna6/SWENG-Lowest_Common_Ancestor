@@ -13,7 +13,7 @@ public class Lowest_Common_AncestorTest extends TestCase {
 	    
 	    }
 	 
-	 /*Tests the (Directed Acyclic) graph is correctly constructed as a binary tree*/
+	 /*Tests the graph is correctly constructed as a binary tree*/
 	 @Test
 	    public void testBinaryTreeConstructor() 
 	    {
@@ -180,7 +180,6 @@ public class Lowest_Common_AncestorTest extends TestCase {
 	    	
 	    }
 	    
-	    //different types of trees
 	    
 	    /* Tests for when tree only has nodes coming from left*/
 	    @Test
@@ -230,4 +229,106 @@ public class Lowest_Common_AncestorTest extends TestCase {
 	        assertEquals(-2, tree.findLCA(-5,-4).data);   	
 	    }
 	    
+	    /**TESTS FOR DIRECTED ACYCLIC GRAPH DATA STRUCTURE**/
+	    //tests adding edges to the DAG
+		 @Test
+			public void testAddEdge(){
+				DAG dag = new DAG(5);
+				
+				assertEquals("Adding a valid edge failed", true, dag.addEdge(0, 1));
+				assertEquals("Adding a  valid edge failed", true, dag.addEdge(1, 2));
+				assertEquals("Adding an edge from node to itself should return false", false, dag.addEdge(0, 0));
+				assertEquals("Adding a cycle test failed", false, dag.addEdge(2, 0));
+				
+				assertEquals("Test for non existent vertices failed", false, dag.addEdge(5, 4));
+				assertEquals("Test for non existent vertices failed", false, dag.addEdge(100, 200));
+				assertEquals("Test for negative vertices failed", false, dag.addEdge(-1, -2));
+				
+			}
+			
+		 
+			/*@Test
+			public void testV(){
+				//Not much to test - should return the num of vertices.
+				dag dag1 = new dag(5);
+				assertEquals("Testing V()", 5, dag1.V());
+			}
+			
+			@Test
+			public void testAdj(){
+				dag dag1 = new dag(5);
+				
+				assertTrue("Testing empty adj list", dag1.adj(0).isEmpty());
+				
+				ArrayList<Integer> expectedResult = new ArrayList<Integer>();
+				
+				//Testing single edge adj list
+				expectedResult.add(2);
+				dag1.addEdge(1, 2);
+				
+				assertTrue("Testing single edge adj list", dag1.adj(1).size() == expectedResult.size());
+				for(int i : expectedResult){
+					assertTrue("Testing single edge adj list", dag1.adj(1).contains(i));
+				}
+				
+				expectedResult.clear();
+				
+				expectedResult.add(3);
+				expectedResult.add(4);
+				
+				dag1.addEdge(2, 3);
+				dag1.addEdge(2, 4);
+				
+				assertTrue("Testing multi-edge adj list", dag1.adj(2).size() == expectedResult.size());
+				for(int i : expectedResult){
+					assertTrue("Testing multi-edge adj list", dag1.adj(2).contains(i));
+				}
+			}
+			
+//			@Test
+			public void testDagLowestCommonAncestor(){
+				dag testDag1 = new dag(5);
+				
+				testDag1.addEdge(0, 1);
+				testDag1.addEdge(0, 2);
+				testDag1.addEdge(2, 3);
+				testDag1.addEdge(3, 4);
+				
+				ArrayList<Integer> expectedResult = new ArrayList<Integer>();
+				expectedResult.add(0);
+						
+				assertTrue("Testing single lca return", testDag1.lowestCommonAncestor(4,1).size() == expectedResult.size());
+				for(int i : expectedResult){
+					assertTrue("Testing single lca return", testDag1.lowestCommonAncestor(4,1).contains(i));
+				}
+				
+				
+				
+				
+				
+				dag testDag2 = new dag(7);
+
+				testDag2.addEdge(0, 3);			
+				testDag2.addEdge(1, 3);
+				testDag2.addEdge(1, 4);
+				testDag2.addEdge(2, 5);
+				testDag2.addEdge(2, 6);
+				testDag2.addEdge(3, 5);
+				testDag2.addEdge(3, 6);
+				testDag2.addEdge(4, 6);
+				
+				expectedResult.clear();
+				expectedResult.add(2);
+				expectedResult.add(3);
+						
+				assertTrue("Testing mutliple lca return", testDag1.lowestCommonAncestor(5,6).size() == expectedResult.size());
+				for(int i : expectedResult){
+					assertTrue("Testing mutliple lca return", testDag1.lowestCommonAncestor(5,6).contains(i));
+				}
+						
+				//Testing non present vertices input
+				assertTrue("Testing negative input", testDag2.lowestCommonAncestor(-2, -1).isEmpty());
+				
+				assertTrue("Testing out of range input", testDag2.lowestCommonAncestor(2457, 987).isEmpty());		
+			*/
 }
