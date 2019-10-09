@@ -267,6 +267,7 @@ public class Lowest_Common_AncestorTest extends TestCase {
 				ArrayList<Integer> expectedResult = new ArrayList<Integer>();
 				
 				//Test for empty DAG before adding vertexes
+				assertTrue(dag.adj(0).size() == expectedResult.size()); 						 //make sure array list sizes are same
 				assertEquals("Test for empty DAG failed", true, dag.adj(0).isEmpty());
 				
 				//populate the DAG
@@ -282,8 +283,10 @@ public class Lowest_Common_AncestorTest extends TestCase {
 				dag.addEdge(1,4);
 				expectedResult.add(3);
 				expectedResult.add(4);
+				assertTrue(dag.adj(1).size() == expectedResult.size());  							//make sure array list sizes are same
 				assertEquals("Test for one adjacent node failed", expectedResult, dag.adj(1));
 		 }
 		 
+
 		 
 }
