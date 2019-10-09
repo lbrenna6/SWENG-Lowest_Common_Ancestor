@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import junit.framework.TestCase;
@@ -237,98 +239,51 @@ public class Lowest_Common_AncestorTest extends TestCase {
 				
 				assertEquals("Adding a valid edge failed", true, dag.addEdge(0, 1));
 				assertEquals("Adding a  valid edge failed", true, dag.addEdge(1, 2));
+				assertEquals("Adding an edge that already exists failed", false, dag.addEdge(1, 2));
 				assertEquals("Adding an edge from node to itself should return false", false, dag.addEdge(0, 0));
 				assertEquals("Adding a cycle test failed", false, dag.addEdge(2, 0));
 				
 				assertEquals("Test for non existent vertices failed", false, dag.addEdge(5, 4));
+				assertEquals("Test for non existent vertices failed", false, dag.addEdge(4, 5));
 				assertEquals("Test for non existent vertices failed", false, dag.addEdge(100, 200));
 				assertEquals("Test for negative vertices failed", false, dag.addEdge(-1, -2));
 				
-			}
-			
+			}	
 		 
-			/*@Test
-			public void testV(){
-				//Not much to test - should return the num of vertices.
-				dag dag1 = new dag(5);
-				assertEquals("Testing V()", 5, dag1.V());
-			}
-			
-			@Test
-			public void testAdj(){
-				dag dag1 = new dag(5);
-				
-				assertTrue("Testing empty adj list", dag1.adj(0).isEmpty());
-				
+		 //tests to check if returns correct number of vertices in the DAG
+		 @Test
+		 public void testV()
+		 {
+			 	DAG dag = new DAG(5);
+				assertEquals("Test V() failed", 5, dag.V());
+		 }
+		 
+		 //tests to check if returns correct vertices pointing from v
+		 @Test
+		 public void testAdj()
+		 {
+			 	DAG dag = new DAG(5);
+				assertEquals("Test V() failed", 5, dag.V());
 				ArrayList<Integer> expectedResult = new ArrayList<Integer>();
 				
-				//Testing single edge adj list
+				//Test for empty DAG before adding vertexes
+				assertEquals("Test for empty DAG failed", true, dag.adj(0).isEmpty());
+				
+				//populate the DAG
+				dag.addEdge(0,1);
+				dag.addEdge(1,2);
+				
+				//test for when only one node is adjacent
 				expectedResult.add(2);
-				dag1.addEdge(1, 2);
+				assertEquals("Test for one adjacent node failed", expectedResult, dag.adj(1));
 				
-				assertTrue("Testing single edge adj list", dag1.adj(1).size() == expectedResult.size());
-				for(int i : expectedResult){
-					assertTrue("Testing single edge adj list", dag1.adj(1).contains(i));
-				}
-				
-				expectedResult.clear();
-				
+				//test for when numerous nodes are adjacent 
+				dag.addEdge(1, 3);
+				dag.addEdge(1,4);
 				expectedResult.add(3);
 				expectedResult.add(4);
-				
-				dag1.addEdge(2, 3);
-				dag1.addEdge(2, 4);
-				
-				assertTrue("Testing multi-edge adj list", dag1.adj(2).size() == expectedResult.size());
-				for(int i : expectedResult){
-					assertTrue("Testing multi-edge adj list", dag1.adj(2).contains(i));
-				}
-			}
-			
-//			@Test
-			public void testDagLowestCommonAncestor(){
-				dag testDag1 = new dag(5);
-				
-				testDag1.addEdge(0, 1);
-				testDag1.addEdge(0, 2);
-				testDag1.addEdge(2, 3);
-				testDag1.addEdge(3, 4);
-				
-				ArrayList<Integer> expectedResult = new ArrayList<Integer>();
-				expectedResult.add(0);
-						
-				assertTrue("Testing single lca return", testDag1.lowestCommonAncestor(4,1).size() == expectedResult.size());
-				for(int i : expectedResult){
-					assertTrue("Testing single lca return", testDag1.lowestCommonAncestor(4,1).contains(i));
-				}
-				
-				
-				
-				
-				
-				dag testDag2 = new dag(7);
-
-				testDag2.addEdge(0, 3);			
-				testDag2.addEdge(1, 3);
-				testDag2.addEdge(1, 4);
-				testDag2.addEdge(2, 5);
-				testDag2.addEdge(2, 6);
-				testDag2.addEdge(3, 5);
-				testDag2.addEdge(3, 6);
-				testDag2.addEdge(4, 6);
-				
-				expectedResult.clear();
-				expectedResult.add(2);
-				expectedResult.add(3);
-						
-				assertTrue("Testing mutliple lca return", testDag1.lowestCommonAncestor(5,6).size() == expectedResult.size());
-				for(int i : expectedResult){
-					assertTrue("Testing mutliple lca return", testDag1.lowestCommonAncestor(5,6).contains(i));
-				}
-						
-				//Testing non present vertices input
-				assertTrue("Testing negative input", testDag2.lowestCommonAncestor(-2, -1).isEmpty());
-				
-				assertTrue("Testing out of range input", testDag2.lowestCommonAncestor(2457, 987).isEmpty());		
-			*/
+				assertEquals("Test for one adjacent node failed", expectedResult, dag.adj(1));
+		 }
+		 
+		 
 }
