@@ -288,5 +288,53 @@ public class Lowest_Common_AncestorTest extends TestCase {
 		 }
 		 
 
+		 	@Test
+			public void testDagLowestCommonAncestor(){
+				DAG dag = new DAG(5);
+				
+				dag.addEdge(0, 1);
+				dag.addEdge(0, 2);
+				dag.addEdge(2, 3);
+				dag.addEdge(3, 4);
+				
+				ArrayList<Integer> expectedResult = new ArrayList<Integer>();
+				expectedResult.add(0);
+						
+				assertTrue("Size of lca is different to the size of the expected result", dag.lowestCommonAncestor(4,1).size() == expectedResult.size());
+				for(int i : expectedResult)
+				{
+					assertTrue("Testing single lca return", dag.lowestCommonAncestor(4,1).contains(i));
+				}
+				
+				//testing a dag that returns multiple lca's
+				DAG dag2 = new DAG(7);
+
+				dag2.addEdge(0, 3);			
+				dag2.addEdge(1, 3);
+				dag2.addEdge(1, 4);
+				dag2.addEdge(2, 5);
+				dag2.addEdge(2, 6);
+				dag2.addEdge(3, 5);
+				dag2.addEdge(3, 6);
+				dag2.addEdge(4, 6);
+				
+				expectedResult.clear();
+				expectedResult.add(2);
+				expectedResult.add(3);
+						
+				assertTrue("lcas size different from expected results size", dag2.lowestCommonAncestor(5,6).size() == expectedResult.size());
+				for(int i : expectedResult)
+				{
+					assertTrue("Testing mutliple lca return", dag2.lowestCommonAncestor(5,6).contains(i));
+				}
+					
+				
+				//Testing input above or below the range of dag
+				assertTrue("Testing out of range inputs", dag2.lowestCommonAncestor(1000, 257).isEmpty());
+				
+				//Testing non present vertices input to the dag
+				assertTrue("Testing negative inputs", dag2.lowestCommonAncestor(-2, -1).isEmpty());		
+		 	}	
+		 
 		 
 }
