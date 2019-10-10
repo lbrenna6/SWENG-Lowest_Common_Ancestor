@@ -102,19 +102,19 @@ public class DAG {
 	//lowestCommonAncestor code
 	public ArrayList<Integer> lowestCommonAncestor(int x, int y)
 	{
-		
-		//mark all X's parents
+		//STEPS TO FIND LCA(s):
+		//Mark all X's parents
 		//For each of X's parents, check if Y is child
 		//if it is
-		//{
-		// get distance to X
-		// distance to Y	
+		// 	get distance to X
+		// 	get distance to Y
+		//
 		// if max(xDist, yDist) < currentMaxDist
 		// 		empty bag and put in this node
 		//
 		// if max(xDist, yDist) == currentMaxDist
 		//		add this node to bag
-		//}
+		//
 		
 		ArrayList<Integer> lcas = new ArrayList<Integer>();
 		int currentMaxDist = Integer.MAX_VALUE;
@@ -183,4 +183,41 @@ public class DAG {
 			}
 	}
 
+	// Class to create a depth first search object on the directed graph
+	private class DirectedDFS
+	{
+		private boolean[] marked;
+		private boolean[] revMarked;
+		
+		public DirectedDFS(DAG G, int s)
+		{
+			marked = new boolean[G.V()];
+			revMarked = new boolean[G.V()];
+			dfs(G, s);
+		}
+		
+		
+		//standard depth first search - in the flow of direction.
+		private void dfs(DAG G, int v)
+		{
+			marked[v] = true;
+			for (int w : G.adj(v))
+			if (!marked[w]) dfs(G, w);
+		}
+		
+		
+		//depth first search against the flow of direction - used to find all parents.
+		private void reverseDfs(DAG G, int v)
+		{
+			revMarked[v] = true;
+			for (int w : G.reverseAdj(v))
+			if (!revMarked[w]) reverseDfs(G, w);
+		}
+		
+		public boolean visited(int v)
+		{ return marked[v]; }
+		
+		public boolean revVisited(int v)
+		{ return revMarked[v]; }
+	}
 }
